@@ -38,7 +38,7 @@
             const y = event.clientY - rect.top;  // y position within the element.
 
             // 支付码区域
-            if (x > rect.width * 0.7 && x < rect.width * 0.9 && y > rect.height * 0.3 && y < rect.height * 0.4) {
+            if (x > rect.width * 0.7 && x < rect.width * 0.8 && y > rect.height * 0.65 && y < rect.height * 0.75) {
                 if (currentImage === 'firstImage.png') {
                     currentImage = 'secondImage.png';
                 } else if (currentImage === 'secondImage.png') {
@@ -47,7 +47,7 @@
             }
 
             // 卡内余额区域
-            if (x > rect.width * 0.7 && x < rect.width * 0.9 && y > rect.height * 0.4 && y < rect.height * 0.5) {
+            if (x > rect.width * 0.6 && x < rect.width * 0.7 && y > rect.height * 0.25 && y < rect.height * 0.35) {
                 if (currentImage === 'firstImage.png') {
                     currentImage = 'thirdImage.png';
                 } else if (currentImage === 'thirdImage.png') {
