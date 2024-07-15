@@ -19,9 +19,10 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            position: absolute;
         }
     </style>
-    <link rel="apple-touch-icon" href="icon.png">
+    <link rel="apple-touch-icon" href="apple_touch_icon.png">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
 </head>
@@ -29,9 +30,31 @@
     <img id="image" src="firstImage.png" alt="Image">
     <script>
         let currentImage = 'firstImage.png';
-        document.body.addEventListener('click', () => {
+
+        document.body.addEventListener('click', (event) => {
             const imageElement = document.getElementById('image');
-            currentImage = currentImage === 'firstImage.png' ? 'secondImage.png' : 'firstImage.png';
+            const rect = imageElement.getBoundingClientRect();
+            const x = event.clientX - rect.left; // x position within the element.
+            const y = event.clientY - rect.top;  // y position within the element.
+
+            // 支付码区域
+            if (x > rect.width * 0.7 && x < rect.width * 0.9 && y > rect.height * 0.3 && y < rect.height * 0.4) {
+                if (currentImage === 'firstImage.png') {
+                    currentImage = 'secondImage.png';
+                } else if (currentImage === 'secondImage.png') {
+                    currentImage = 'firstImage.png';
+                }
+            }
+
+            // 卡内余额区域
+            if (x > rect.width * 0.7 && x < rect.width * 0.9 && y > rect.height * 0.4 && y < rect.height * 0.5) {
+                if (currentImage === 'firstImage.png') {
+                    currentImage = 'thirdImage.png';
+                } else if (currentImage === 'thirdImage.png') {
+                    currentImage = 'firstImage.png';
+                }
+            }
+
             imageElement.src = currentImage;
         });
     </script>
